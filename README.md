@@ -17,7 +17,7 @@ psql -h 0.0.0.0 -U postgres -d postgres --port=5431
 ```
 It's time to create all tables and triggers (init.sql).
 
-Pull and launch Redis server Image:
+Pull Redis server Image and launch container:
 ```
 docker pull redis
 sudo docker run --restart=always -d --name redis_1    -v /opt/redis/etc/redis.conf:/usr/local/etc/redis/redis.conf    -v /opt/redis/data:/data    -p 127.0.0.1:6380:6379 redis redis-server /usr/local/etc/redis/redis.conf 
