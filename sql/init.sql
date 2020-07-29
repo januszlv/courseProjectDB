@@ -128,7 +128,7 @@ BEGIN
     RAISE EXCEPTION 'Move cannot be updated';
   ELSEIF (TG_OP = 'INSERT') THEN
     SELECT INTO cur_score score FROM match WHERE id = NEW.match_id;
-    IF cur_score IS NOT NULL THEN
+    IF cur_score != 0 THEN
       RAISE EXCEPTION 'cannot add move to ended match';
     END IF;
   END IF;
@@ -182,6 +182,12 @@ SELECT *
 FROM game;
 SELECT *
 FROM match;
+SELECT *
+FROM move;
+SELECT *
+FROM friendship;
+SELECT *
+FROM leaderboard;
 --
 -- INSERT INTO game (name, description)
 -- VALUES ('game name', 'description of game');
@@ -246,8 +252,7 @@ FROM match;
 -- FROM move
 -- WHERE id = 1; -- (+)
 
-SELECT *
-FROM leaderboard
-WHERE id = 11
-  AND deleted IS NOT TRUE
-
+-- SELECT *
+-- FROM leaderboard
+-- WHERE id = 11
+--   AND deleted IS NOT TRUE
