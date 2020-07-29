@@ -388,7 +388,7 @@ func (store *dbStore) CreateFriendship(friendship *models.Friendship) (string, e
 	}
 
 	err = store.db.QueryRow(
-		"INSERT INTO leaderboard (user_id, user2_id) VALUES ($1, $2) RETURNING id",
+		"INSERT INTO friendship (user_id, user2_id) VALUES ($1, $2) RETURNING id",
 		userID, user2ID).Scan(&id)
 	return string(id), err
 }
